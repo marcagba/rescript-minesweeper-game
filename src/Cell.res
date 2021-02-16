@@ -2,6 +2,7 @@ type state =
   | Hidden
   | Dug
   | Blown
+  | Flagged
 
 type t = {state: state, hasBomb: bool}
 
