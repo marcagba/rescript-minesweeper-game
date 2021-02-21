@@ -3,28 +3,27 @@
 import * as React from "react";
 import * as Belt_Array from "bs-platform/lib/es6/belt_Array.js";
 
-function renderCells(cells) {
-  return Belt_Array.map(cells, (function (cell) {
-                var match = cell.state;
-                switch (match) {
-                  case /* Hidden */0 :
-                      return React.createElement("div", {
-                                  className: "GridCell"
-                                }, "H");
-                  case /* Dug */1 :
-                      return React.createElement("div", {
-                                  className: "GridCell"
-                                }, "D");
-                  case /* Blown */2 :
-                      return React.createElement("div", {
-                                  className: "GridCell"
-                                }, "B");
-                  case /* Flagged */3 :
-                      return React.createElement("div", {
-                                  className: "GridCell"
-                                }, "F");
-                  
-                }
+function renderCell(cell) {
+  var match = cell.state;
+  switch (match) {
+    case /* Hidden */0 :
+        return "H";
+    case /* Dug */1 :
+        return "D";
+    case /* Blown */2 :
+        return "B";
+    case /* Flagged */3 :
+        return "F";
+    
+  }
+}
+
+function renderCellRows(cells) {
+  return Belt_Array.mapWithIndex(cells, (function (i, cell) {
+                return React.createElement("div", {
+                            key: String(i),
+                            className: "GridCell"
+                          }, renderCell(cell));
               }));
 }
 
@@ -32,13 +31,14 @@ function GridUI(Props) {
   var cells = Props.cells;
   return React.createElement("div", {
               className: "GridUI"
-            }, renderCells(cells));
+            }, renderCellRows(cells));
 }
 
 var make = GridUI;
 
 export {
-  renderCells ,
+  renderCell ,
+  renderCellRows ,
   make ,
   
 }

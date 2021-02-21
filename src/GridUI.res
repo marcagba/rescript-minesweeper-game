@@ -1,17 +1,18 @@
-let renderCells = (cells: array<Cell.t>) => {
-  cells->Belt.Array.map(cell => {
-        switch cell.state {
-        | Hidden => <div className="GridCell">{React.string("H")}</div>
-        | Dug => <div className="GridCell">{React.string("D")}</div>
-        | Blown => <div className="GridCell">{React.string("B")}</div>
-        | Flagged => <div className="GridCell">{React.string("F")}</div>
-        }
+let renderCell = (cell: Cell.t) =>
+  switch cell.state {
+  | Hidden => React.string("H")
+  | Dug => React.string("D")
+  | Blown => React.string("B")
+  | Flagged => React.string("F")
+  }
+
+let renderCellRows = cells => {
+  cells->Belt.Array.mapWithIndex((i, cell) => {
+    <div key={Belt.Int.toString(i)} className="GridCell"> {renderCell(cell)} </div>
   })
 }
 
 @react.component
-let make = (~cells: array<Cell.t>) => {
-  <div className="GridUI">
-  {renderCells(cells)->React.array}
-  </div>
+let make = (~cells: array<Cell.t>, ~rowSize, ~columnSize) => {
+  <div className="GridUI"> {renderCellRows(cells)->React.array} </div>
 }

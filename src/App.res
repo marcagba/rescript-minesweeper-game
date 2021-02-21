@@ -11,8 +11,8 @@ module AppShell = {
   }
 }
 
-open GameLogicContext;
+open GameLogicContext
 @react.component
 let make = () => {
-  <AppShell> <GridUI cells=grid.cells /> </AppShell>
+  <AppShell> <GridUI cells=grid.cells rowSize=grid.width columnSize=grid.height /> </AppShell>
 }

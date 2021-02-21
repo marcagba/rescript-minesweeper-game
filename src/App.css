@@ -9,6 +9,9 @@
 
 .GridUI {
   background-color: white;
+
+  display: grid;
+  grid: auto-flow / repeat(9, 1fr);
 }
 
 .GridCell{

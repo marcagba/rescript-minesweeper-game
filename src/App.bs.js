@@ -27,7 +27,9 @@ var AppShell = {
 function App(Props) {
   return React.createElement(App$AppShell, {
               children: React.createElement(GridUI$RescriptMinesweeperGame.make, {
-                    cells: grid.cells
+                    cells: grid.cells,
+                    rowSize: grid.width,
+                    columnSize: grid.height
                   })
             });
 }
