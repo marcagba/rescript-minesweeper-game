@@ -2,6 +2,7 @@
 
 import * as React from "react";
 import * as Belt_Array from "bs-platform/lib/es6/belt_Array.js";
+import * as ReactDOMStyle from "reason-react/src/ReactDOMStyle.bs.js";
 
 function renderCell(cell) {
   var match = cell.state;
@@ -29,8 +30,14 @@ function renderCellRows(cells) {
 
 function GridUI(Props) {
   var cells = Props.cells;
+  var rowSize = Props.rowSize;
+  var columnSize = Props.columnSize;
+  var __x = {};
+  var __x$1 = ReactDOMStyle.unsafeAddProp(__x, "--rowSize", String(rowSize));
+  var customProp = ReactDOMStyle.unsafeAddProp(__x$1, "--columnSize", String(columnSize));
   return React.createElement("div", {
-              className: "GridUI"
+              className: "GridUI",
+              style: customProp
             }, renderCellRows(cells));
 }
 

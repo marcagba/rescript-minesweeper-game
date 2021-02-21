@@ -13,7 +13,7 @@
   background-color: white;
 
   display: grid;
-  grid: auto-flow / repeat(9, 1fr);
+  grid: repeat(var(--rowSize), 1fr) / repeat(var(--columnSize), 1fr);
 }
 
 .GridCell{

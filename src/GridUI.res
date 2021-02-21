@@ -14,5 +14,10 @@ let renderCellRows = cells => {
 
 @react.component
 let make = (~cells: array<Cell.t>, ~rowSize, ~columnSize) => {
-  <div className="GridUI"> {renderCellRows(cells)->React.array} </div>
+  let customProp =
+    ReactDOM.Style.make()
+    ->ReactDOM.Style.unsafeAddProp(_, "--rowSize", string_of_int(rowSize))
+    ->ReactDOM.Style.unsafeAddProp(_, "--columnSize", string_of_int(columnSize))
+
+  <div className="GridUI" style=customProp> {renderCellRows(cells)->React.array} </div>
 }
