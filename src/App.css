@@ -13,10 +13,11 @@
   background-color: white;
 
   display: grid;
+  /* XXX: Custom props are defined at the component level */
   grid: repeat(var(--rowSize), 1fr) / repeat(var(--columnSize), 1fr);
 }
 
-.GridCell{
+.GridCell {
   background-color: grey;
   border: solid 1px black;
 }
