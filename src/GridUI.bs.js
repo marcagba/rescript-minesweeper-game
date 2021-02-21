@@ -2,7 +2,7 @@
 
 import * as React from "react";
 import * as Belt_Array from "bs-platform/lib/es6/belt_Array.js";
-import * as ReactDOMStyle from "reason-react/src/ReactDOMStyle.bs.js";
+import * as ReactDOMStyle from "@rescript/react/src/ReactDOMStyle.bs.js";
 
 function renderCell(cell) {
   var match = cell.state;
